@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def create
     username = params[:username]
     username = User.find_or_create_by(name: username)
-    render json: username, only: [:name]
+    render json: username, only: [:name, :id]
   end
 
   def index
