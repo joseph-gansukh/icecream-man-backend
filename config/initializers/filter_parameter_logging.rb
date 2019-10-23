@@ -2,3 +2,13 @@
 
 # Configure sensitive parameters which will be filtered from the log file.
 Rails.application.config.filter_parameters += [:password]
+
+Rails.application.config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins '*'
+  
+      resource '*',
+        headers: :any,
+        methods: [:get, :post, :put, :patch, :delete, :options, :head]
+    end
+  end
